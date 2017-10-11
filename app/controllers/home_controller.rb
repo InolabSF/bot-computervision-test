@@ -5,7 +5,7 @@ class HomeController < ApplicationController
   def line_test
     print params
 
-    begin
+    
       # messaging = params['events'][0]['type']
       # raise "messaging is needed" unless messaging
       user_id = params['events'][0]['source']['userId']
