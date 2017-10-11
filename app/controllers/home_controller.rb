@@ -40,7 +40,7 @@ class HomeController < ApplicationController
     #   end
     #
     # end
-
+    print user_id
 
     render json: {"user_id": user_id}, status: 200
   end
