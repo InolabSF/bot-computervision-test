@@ -8,16 +8,15 @@ class HomeController < ApplicationController
     begin
       # messaging = params['events'][0]['type']
       # raise "messaging is needed" unless messaging
-      # user_id = params['events'][0]['source']['userId']
-      user_id = params
+      user_id = params['events'][0]['source']['userId']
       print user_id
-      raise "line user id is needed" unless user_id
+      # raise "line user id is needed" unless user_id
 
-    rescue => e
-      json = { :application_code => 400, :message => e.message}
-      render :json => json, :status => 400
-      return
-    end
+    # rescue => e
+    #   json = { :application_code => 400, :message => e.message}
+    #   render :json => json, :status => 400
+    #   return
+    # end
     #
     # apiUrl = "westcentralus.api.cognitive.microsoft.com"
     # uri = "https://" + apiUrl
