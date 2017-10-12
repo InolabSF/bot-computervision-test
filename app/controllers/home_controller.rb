@@ -4,7 +4,7 @@ class HomeController < ApplicationController
 
   def line_test
     # print JSON.parse(params)
-    print 'JSON.parse(params)'
+    print 'hello'
 
 
       # messaging = params['events'][0]['type']
