@@ -10,6 +10,7 @@ class HomeController < ApplicationController
 
       user_id = params['events'][0]['source']['userId']
       print user_id
+      print 'done'
 
       # raise "line user id is needed" unless user_id
 
