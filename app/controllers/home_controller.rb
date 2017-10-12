@@ -3,14 +3,14 @@ class HomeController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   def line_test
-    # print params
+    print params
 
 
       # messaging = params['events'][0]['type']
       # raise "messaging is needed" unless messaging
 
-      # user_id = params['events'][0]['source']['userId']
-      # print user_id
+      user_id = params['events'][0]['source']['userId']
+      print user_id
 
       # raise "line user id is needed" unless user_id
 
