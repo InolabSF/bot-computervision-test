@@ -3,7 +3,8 @@ class HomeController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   def line_test
-    print JSON.parse(params)
+    # print JSON.parse(params)
+    print 'JSON.parse(params)'
 
 
       # messaging = params['events'][0]['type']
