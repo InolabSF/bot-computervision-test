@@ -44,7 +44,7 @@ class HomeController < ApplicationController
     #
     # end
     # render json: {"user_id": user_id}, status: 200
-    render status: 200
+    render json: { :description => text }, status: 200
   end
 
   def handle_webhook
