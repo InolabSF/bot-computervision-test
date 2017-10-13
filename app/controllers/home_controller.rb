@@ -33,7 +33,7 @@ class HomeController < ApplicationController
     end
 
     # json_line = '{"to":' + JSON.generate(user_id) + ', "messages":[{"type": "text",  "text":'+ JSON.generate(text) + '}]}'
-    json_line = '{"to":' + user_id.to_s + ', "messages":[{"type": "text",  "text":'+ '"Hi"' + '}]}'
+    json_line = '{"to":' + JSON.dumps(user_id) + ', "messages":[{"type": "text",  "text": "Hi"}]}'
     # json_line = '{"to":"U0523ed4122216d0dda691a00138b2950", "messages":[{"type": "text",  "text": "Hi"}]}'
 
     res = conn.post do |req|
