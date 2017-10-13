@@ -35,7 +35,7 @@ class HomeController < ApplicationController
       res = conn.post do |req|
          req.url lineUrl
          req.headers['Content-Type'] = 'application/json'
-         req.headers['Authorization'] = 'Bearer '+CAT_LINE
+         req.headers['Authorization'] = 'Bearer '+ ENV['CAT_LINE']
          req.body = json: {:"to" => user_id, :"messages" => text}
       end
 
