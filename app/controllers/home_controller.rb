@@ -2,7 +2,7 @@ class HomeController < ApplicationController
 
   skip_before_filter :verify_authenticity_token
 
-  def line_test
+  def post_line
     # print JSON.dump(params)
 
       # messaging = params['events'][0]['type']
@@ -30,17 +30,18 @@ class HomeController < ApplicationController
       builder.use Faraday::Response::Logger
      ## アダプター選択（選択肢は他にもあり）
       builder.use Faraday::Adapter::NetHttp
+    end
 
 
       res = conn.post do |req|
          req.url lineUrl
          req.headers['Content-Type'] = 'application/json'
          req.headers['Authorization'] = 'Bearer '+ ENV['CAT_LINE']
-         req.body = json: {:"to" => user_id, :"messages" => text}
+         req.body = {:"to" => user_id, :"messages" => text}
       end
 
     # render json: {"user_id": user_id}, status: 200
-    render status: 200
+      render json: { :description => 'success' }, status: 200
   end
 
   def handle_webhook
@@ -78,6 +79,10 @@ class HomeController < ApplicationController
     text = body["description"]["captions"][0]["text"]
 
       render json: { :description => text }, status: 200
+  end
+
+  def test_get
+      render json: { :description => 'success' }, status: 200
   end
 
 end
