@@ -14,13 +14,12 @@ class HomeController < ApplicationController
       raise "text is needed" unless text
       # messaging = params['events'][0]['type']
       # raise "messaging is needed" unless messaging
-
     rescue => e
       json = { :application_code => 400, :message => e.message}
       render :json => json, :status => 400
       return
     end
-    #
+
     lineUrl = "https://api.line.me/v2/bot/message/push"
 
     conn = Faraday::Connection.new(:url => lineUrl) do |builder|
@@ -41,8 +40,7 @@ class HomeController < ApplicationController
        req.body = json_line
     end
 
-    # render json: {"user_id": user_id}, status: 200
-      render json: { :description => 'success' }, status: 200
+    render json: { :description => 'success' }, status: 200
   end
 
   def handle_webhook
@@ -83,26 +81,6 @@ class HomeController < ApplicationController
   end
 
   def test_get
-
-    lineUrl = "https://api.line.me/v2/bot/message/push"
-
-    conn = Faraday::Connection.new(:url => lineUrl) do |builder|
-     ## URLをエンコードする
-      builder.use Faraday::Request::UrlEncoded
-     ## ログを標準出力に出したい時(本番はコメントアウトでいいかも)
-      builder.use Faraday::Response::Logger
-     ## アダプター選択（選択肢は他にもあり）
-      builder.use Faraday::Adapter::NetHttp
-    end
-
-    json_req = '{"to":"U0523ed4122216d0dda691a00138b2950", "messages":[{"type": "text",  "text": "Hi"}]}'
-
-    res = conn.post do |req|
-       req.url lineUrl
-       req.headers['Content-Type'] = 'application/json'
-       req.headers['Authorization'] = 'Bearer dkv1rIF2vv9HGoduDjym2RbujLwbb69L9Auh+ufvU6IyWAn9eKgHk4ck8NrDG7yELMpJPEohAJCweIf7b0/R9kt0B9OC7smAAdNvDDPcNTj49YsVmdbPPx7Cv0FwAqpEuEiNhPuxodP6FTvC0zYl5QdB04t89/1O/w1cDnyilFU='
-       req.body = json_req
-    end
 
       render json: { :description => 'success' }, status: 200
   end
