@@ -23,7 +23,7 @@ class HomeController < ApplicationController
     #
     lineUrl = "https://api.line.me/v2/bot/message/push"
 
-    conn = Faraday::Connection.new(:url => uri) do |builder|
+    conn = Faraday::Connection.new(:url => lineUrl) do |builder|
      ## URLをエンコードする
       builder.use Faraday::Request::UrlEncoded
      ## ログを標準出力に出したい時(本番はコメントアウトでいいかも)
