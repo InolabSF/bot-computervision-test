@@ -32,9 +32,7 @@ class HomeController < ApplicationController
       builder.use Faraday::Adapter::NetHttp
     end
 
-    # json_line = '{"to":' + JSON.dump(user_id) + ', "messages":[{"type": "text",  "text":'+ JSON.dump(text) + '}]}'
-    json_line = '{"to":' + JSON.dump(user_id) + ', "messages":[{"type": "text",  "text": "Hi"}]}'
-    # json_line = '{"to":"U0523ed4122216d0dda691a00138b2950", "messages":[{"type": "text",  "text": "Hi"}]}'
+    json_line = '{"to":' + JSON.dump(user_id) + ', "messages":[{"type": "text",  "text":'+ JSON.dump(text) + '}]}'
 
     res = conn.post do |req|
        req.url lineUrl
